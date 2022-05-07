@@ -1,0 +1,15 @@
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .box div {
+    width: 50%;
+    height: 10%;
+  }
+
+  .card{
+  margin-top: 2%;
+  }
