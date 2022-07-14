@@ -17,7 +17,7 @@ export class FirebaseService {
                   });
                 
   }
-  requestPermission() {
+  requestPermission(topic:any) {
   this.angularFireMessaging.requestToken.subscribe(
   (token) => {
   console.log(token);
@@ -29,7 +29,7 @@ export class FirebaseService {
   this.angularFireMessaging.getToken.subscribe((token:any) => {
     console.log("Access token : ", token);
     this.accessToken = token;
-    this.subscribeToTopic() 
+    this.subscribeToTopic(topic) 
   })
   }
    receiveMessage() {
@@ -42,14 +42,14 @@ export class FirebaseService {
 
   } 
 
-  subscribeToTopic() {
-    const apiKey = "Firebase Cloud Messaging API Key"
-    if(this.accessToken != "") {
+  subscribeToTopic(topic:any) {
+  const apiKey = "" 
+  if(this.accessToken != "") {
       const topicURL = `https://iid.googleapis.com/iid/v1/${this.accessToken}/rel/topics/`;
       const headers = new HttpHeaders({
         'Authorization' : `key=${apiKey}`
       });
-      this.httpClient.post(topicURL+ "testsTopic","", {headers}).subscribe(res => {
+      this.httpClient.post(topicURL+ topic,"", {headers}).subscribe(res => {
         console.log("subscribe success");
         console.log(res);
       },err => {

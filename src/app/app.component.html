@@ -1,16 +1,39 @@
-<div style="width: 100%; text-align: center;">
-    <h3>Message received in forground</h3>
-</div>
-<div class="box" *ngIf="notifications.length != 0; else noNotification">
-    <div class="card" *ngFor="let notification of notifications; index as i">
-        <div class="card-body">
-            <h5 class="card-title">{{notification.title}}</h5>
-            <p class="card-text">
-                {{notification.body}}
-            </p>
-            <button type="button" class="btn btn-primary" (click)="remove(i)">Remove</button>
+<div *ngIf="isTopic">
+    <div style="width: 100%; text-align: center;">
+        <h3>Message received in forground</h3>
+    </div>
+    <div class="box" *ngIf="notifications.length != 0; else noNotification">
+        <div class="card" *ngFor="let notification of notifications; index as i">
+            <div class="card-body">
+                <h5 class="card-title">{{notification.title}}</h5>
+                <p class="card-text">
+                    {{notification.body}}
+                </p>
+                <button type="button" class="btn btn-primary" (click)="remove(i)">Remove</button>
+            </div>
         </div>
     </div>
+</div>
+<div *ngIf="!isTopic">
+        <!-- Grid row -->
+        <div class="form-row align-items-center">
+          <!-- Grid column -->
+          <div style="display: flex;">
+            <!-- Material input -->
+            <div class="row labelStyle" style="left: 50%;" >
+              <label class="col-auto" for="inlineFormInputMD">Enter the topic to subscribe</label>
+              <input mdbInput type="text" class="col-auto" id="inlineFormInputMD" placeholder="10000001" [(ngModel)]="topic">
+              <div class="col-auto">
+                <button type="submit" mdbBtn color="primary" class="btn btn-primary mb-0" (click)="submit()">Submit</button>
+              </div>
+            </div>
+          </div>
+          <!-- Grid column -->
+          <!-- Grid column -->
+        
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
 </div>
 <ng-template #noNotification>
     <div style="width: 100%; text-align: center;">

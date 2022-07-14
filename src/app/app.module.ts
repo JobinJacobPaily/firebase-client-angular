@@ -11,12 +11,14 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireMessagingModule,
